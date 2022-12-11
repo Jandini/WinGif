@@ -28,7 +28,8 @@ namespace WinGif
 
             _creator = AnimatedGif.AnimatedGif.Create(parameters.OutputFile, parameters.FrameDelay, 0);
 
-            bool waiting = true;            
+            bool waiting = true;
+            bool matched = false;
 
             while (_capturing)
             {
@@ -37,19 +38,25 @@ namespace WinGif
                 {
                     var text = NativeMethods.GetActiveWindowText();
 
-                    if (text.Contains(parameters.WindowCaption))
+                    if (text.Contains(parameters.WindowCaption) || (matched && !parameters.SingleWindow))
                     {
+                        // Do not capture itself
+                        if (!parameters.SingleWindow && text.Contains("WinGif.exe"))
+                        {
+                            Thread.Sleep(parameters.CaptureDelay);
+                            continue;
+                        }
+
                         var bitmap = NativeMethods.CaptureActiveWindow();
 
                         _logger.LogInformation("Added frame number {frame} for {text} window", ++_frames, text);
                         _creator.AddFrame(bitmap, delay: -1, quality: GifQuality.Bit8);
 
                         if (!string.IsNullOrEmpty(parameters.OutputFramesDirectory))
-                        {
                             bitmap.Save(Path.Combine(parameters.OutputFramesDirectory, _frames.ToString().PadLeft(8, '0')) + ".png", ImageFormat.Png);
-                        }
 
                         waiting = true;
+                        matched = true;
                     }
                     else
                     {
@@ -58,14 +65,15 @@ namespace WinGif
 
                         waiting = false;
                     }
-
                 }
                 catch (Exception ex)
                 {
                     _logger.LogError(message: ex.Message, ex);
                 }
-
-                Thread.Sleep(parameters.CaptureDelay);
+                finally
+                {
+                    Thread.Sleep(parameters.CaptureDelay);
+                }
             }
 
             _logger.LogInformation("Capture ended");

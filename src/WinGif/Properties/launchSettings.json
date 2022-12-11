@@ -2,7 +2,7 @@
   "profiles": {
     "Capture": {
       "commandName": "Project",
-      "commandLineArgs": "capture -t \"ICE\" -o C:\\Temp\\iceviewer.gif -f C:\\temp\\iv"
+      "commandLineArgs": "capture -s -t \"ICE\" -o C:\\Temp\\iceviewer.gif -f C:\\temp\\iv"
     },
     "Make": {
       "commandName": "Project",
@@ -10,7 +10,7 @@
     },
     "Help": {
       "commandName": "Project",
-      "commandLineArgs": "--help"
+      "commandLineArgs": "capture --help"
     }
   }
 }

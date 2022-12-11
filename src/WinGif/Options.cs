@@ -14,8 +14,11 @@ namespace WinGif
         [Verb("capture", isDefault: true, HelpText = "Create animated GIF by capturing active window.")]
         internal class Capture : Gif, ICaptureParameters 
         {
-            [Option('t', "title", HelpText = "Full or partial window title to capture.", Required = true)]
+            [Option('t', "title", HelpText = "Full or partial window title to trigger the capture of active window.", Required = true)]
             public string WindowCaption { get; set; }
+
+            [Option('s', "single", HelpText = "Capture window only with given title.", Default = false, Required = false)]
+            public bool SingleWindow { get; set; }
 
             [Option('o', "output", HelpText = "Output GIF file name.", Required = true)]
             public string OutputFile { get; set; }
