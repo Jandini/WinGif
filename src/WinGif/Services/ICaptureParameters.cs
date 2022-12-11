@@ -1,9 +1,11 @@
 ﻿namespace WinGif
 {
-    public interface IMakeParameters
+    public interface ICaptureParameters
     {
-        public string InputDirectory { get; }
+        public string WindowCaption { get; }
         public string OutputFile { get; }
+        public string OutputFramesDirectory { get; }
+        public int CaptureDelay { get; }
         public int FrameDelay { get; }
 
     }
