@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "Capture": {
+      "commandName": "Project",
+      "commandLineArgs": "capture"
+    },
+    "Make": {
+      "commandName": "Project",
+      "commandLineArgs": "make"
+    },
+    "Help": {
+      "commandName": "Project",
+      "commandLineArgs": "--help"
+    }
+  }
+}
