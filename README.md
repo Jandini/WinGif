@@ -2,9 +2,10 @@
 
 [![build](https://github.com/Jandini/WinGif/actions/workflows/build.yml/badge.svg)](https://github.com/Jandini/WinGif/actions/workflows/build.yml)
 
-Create animated gif files from foreground windows capture or frames saved in individual files.
+Create animated gif files from foreground windows capture or frames saved in individual files. 
+Created from [Janda.Go](https://github.com/Jandini/Janda.Go) powered by [AnimatedGif](https://github.com/mrousavy/AnimatedGif).
 
-Download [WinGif.exe](https://github.com/Jandini/WinGif/releases/download/0.1.0/WinGif.exe)
+Download latest [WinGif](https://github.com/Jandini/WinGif/releases/download/0.1.0/WinGif.exe)
 
 ## Capture active window
 
@@ -36,5 +37,4 @@ wingif make -i %TEMP%\wingif -o %TEMP%\wingif2.gif
 
 
 
-----
-Created from [Janda.Go](https://github.com/Jandini/Janda.Go)
+
