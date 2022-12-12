@@ -2,11 +2,15 @@
   "profiles": {
     "Capture": {
       "commandName": "Project",
-      "commandLineArgs": "capture -s -t \"ICE\" -o C:\\Temp\\iceviewer.gif -f C:\\temp\\iv"
+      "commandLineArgs": "capture -s -t Chrome -o %TEMP%/chrome.gif -f %TEMP%/chrome"
     },
     "Make": {
       "commandName": "Project",
-      "commandLineArgs": "make -i C:\\Temp\\iv -o C:\\Temp\\iv.gif "
+      "commandLineArgs": "make -i %TEMP%/chrome -o %TEMP%/chrome.gif"
+    },
+    "Self": {
+      "commandName": "Project",
+      "commandLineArgs": "capture -l -s -t WinGif.exe -o %TEMP%/wingif.gif -f %TEMP%/wingif"
     },
     "Help": {
       "commandName": "Project",

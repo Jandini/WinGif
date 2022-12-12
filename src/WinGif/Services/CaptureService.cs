@@ -41,7 +41,7 @@ namespace WinGif
                     if (text.Contains(parameters.WindowCaption) || (matched && !parameters.SingleWindow))
                     {
                         // Do not capture itself
-                        if (!parameters.SingleWindow && text.Contains("WinGif.exe"))
+                        if (!parameters.SingleWindow && text.Contains("WinGif.exe") && !parameters.AllowSelfCapture)
                         {
                             Thread.Sleep(parameters.CaptureDelay);
                             continue;

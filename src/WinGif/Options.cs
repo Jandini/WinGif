@@ -8,6 +8,9 @@ namespace WinGif
         {
             [Option('d', "frame-delay", HelpText = "Delay between GIF frames in milliseconds. (33ms delay between frames equals ~30fps)", Default = 1000, Required = false)]
             public int FrameDelay { get; set; }
+
+            [Option('l', "self-capture", HelpText = "Allow self capture. By default WinGif will stop capturing when the window is active.", Default = false, Required = false)]
+            public bool AllowSelfCapture { get; set; }
         }
 
 

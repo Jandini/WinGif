@@ -8,6 +8,7 @@
         public string OutputFramesDirectory { get; }
         public int CaptureDelay { get; }
         public int FrameDelay { get; }
+        public bool AllowSelfCapture { get; }
 
     }
 }
