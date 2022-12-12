@@ -4,6 +4,7 @@
 
 Create animated gif files from foreground windows capture or frames saved in individual files.
 
+Download [WinGif.exe](https://github.com/Jandini/WinGif/releases/download/0.1.0/WinGif.exe)
 
 ## Capture active window
 
