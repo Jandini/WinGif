@@ -1,5 +1,7 @@
 # WinGif
 
+[![build](https://github.com/Jandini/WinGif/actions/workflows/build.yml/badge.svg)](https://github.com/Jandini/WinGif/actions/workflows/build.yml)
+
 Create animated gif files from foreground windows capture or frames saved in individual files.
 
 
