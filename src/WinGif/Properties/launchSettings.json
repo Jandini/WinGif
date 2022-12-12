@@ -6,7 +6,7 @@
     },
     "Make": {
       "commandName": "Project",
-      "commandLineArgs": "make"
+      "commandLineArgs": "make -i C:\\Temp\\iv -o C:\\Temp\\iv.gif "
     },
     "Help": {
       "commandName": "Project",
