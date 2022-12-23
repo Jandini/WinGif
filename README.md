@@ -5,7 +5,7 @@
 Create animated gif files from foreground windows capture or frames saved in individual files. 
 Created from [Janda.Go](https://github.com/Jandini/Janda.Go) powered by [AnimatedGif](https://github.com/mrousavy/AnimatedGif).
 
-Download latest [WinGif](https://github.com/Jandini/WinGif/releases/download/0.1.0/WinGif.exe)
+Download latest [WinGif](https://github.com/Jandini/WinGif/releases/download/0.2.0/WinGif.exe)
 
 ## Capture active window
 
