@@ -10,6 +10,8 @@ namespace WinGif
 {
     class Program
     {
+        internal static string Title { get; set; }
+
         static void Main(string[] args)
         {            
             try

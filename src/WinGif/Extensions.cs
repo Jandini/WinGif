@@ -8,11 +8,17 @@ namespace WinGif
     internal static class Extensions
     {
 
+
         internal static IServiceProvider LogVersion(this IServiceProvider provider)
         {
+            var version = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
+
+            Program.Title = $"WinGif {version} by Matt Janda";
+            Console.Title = Program.Title;
+
             provider
                 .GetRequiredService<ILogger<Program>>()
-                .LogInformation("WinGif {version}", Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion);
+                .LogInformation("WinGif {version}", version);
 
             return provider;
         }
