@@ -17,7 +17,30 @@ wingif capture -s -t Chrome -o %TEMP%/chrome.gif -f %TEMP%/chrome
 ![chrome](https://user-images.githubusercontent.com/19593367/207031114-49891e15-c160-4346-b546-b943dbfe0adc.gif)
 
 
-## Capture WinGif
+## Capture and crop active window
+
+Crop options allow to adjust capture window are. You and increase or decrease it. Following example show how to capture VirtualBox with and without client menu. 
+
+
+Capture entire VirtualBox window. 
+```
+wingif capture -s -t " Oracle VM VirtualBox" -o %TEMP%/virtualbox.gif
+```
+
+![virtualbox](https://user-images.githubusercontent.com/19593367/211197183-93ba81ab-5e5e-4919-924d-f27e19deca5b.gif)
+
+
+Capture Virtualbox window with crop to remove menu and status bar. The values were measured for Windows 10. 
+
+```
+wingif capture -s -t " Oracle VM VirtualBox" -o %TEMP%/virtualboxcrop.gif --crop-top 89 --crop-bottom -43 --crop-left 1 --crop-right -1
+```
+
+![virtualboxcrop](https://user-images.githubusercontent.com/19593367/211197388-d305b01e-c2c9-4f54-9900-cc77a2f90fde.gif)
+
+
+
+## Self capture
 
 The option `-l` allow to capture WinGif window. By default the WinGif window does not allow to capture itself. 
 ```
