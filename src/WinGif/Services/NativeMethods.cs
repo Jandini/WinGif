@@ -15,7 +15,7 @@ namespace WinGif
         public static extern IntPtr GetDesktopWindow();
 
         [StructLayout(LayoutKind.Sequential)]
-        private struct Rect
+        public struct Rect
         {
             public int Left;
             public int Top;
@@ -55,10 +55,16 @@ namespace WinGif
             return rect;
         }
 
-        private static Bitmap CaptureWindow(IntPtr handle)
+        private static Bitmap CaptureWindow(IntPtr handle, Rect crop)
         {
             var rect = GetWindowRectangle(handle);
-            var bounds = new Rectangle(rect.Left, rect.Top, rect.Right - rect.Left, rect.Bottom - rect.Top);
+
+            rect.Left += crop.Left;
+            rect.Right += crop.Right;
+            rect.Top += crop.Top;
+            rect.Bottom += crop.Bottom;
+
+            var bounds = new Rectangle(rect.Left, rect.Top, rect.Right - rect.Left, rect.Bottom - rect.Top);           
             var result = new Bitmap(bounds.Width, bounds.Height);
 
             using (var graphics = Graphics.FromImage(result))
@@ -70,12 +76,17 @@ namespace WinGif
 
         public static Image CaptureDesktop()
         {
-            return CaptureWindow(GetDesktopWindow());
+            return CaptureWindow(GetDesktopWindow(), new Rect());
+        }
+
+        public static Bitmap CaptureActiveWindow(Rect crop)
+        {
+            return CaptureWindow(GetForegroundWindow(), crop);
         }
 
         public static Bitmap CaptureActiveWindow()
         {
-            return CaptureWindow(GetForegroundWindow());
+            return CaptureWindow(GetForegroundWindow(), new Rect());
         }
 
 

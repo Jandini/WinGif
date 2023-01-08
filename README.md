@@ -17,7 +17,30 @@ wingif capture -s -t Chrome -o %TEMP%/chrome.gif -f %TEMP%/chrome
 ![chrome](https://user-images.githubusercontent.com/19593367/207031114-49891e15-c160-4346-b546-b943dbfe0adc.gif)
 
 
-## Capture WinGif
+## Capture and crop active window
+
+Crop options allow to adjust capture window are. You and increase or decrease it. Following example show how to capture VirtualBox with and without client menu. 
+
+
+Capture entire VirtualBox window. 
+```
+wingif capture -s -t " Oracle VM VirtualBox" -o %TEMP%/virtualbox.gif
+```
+
+![virtualbox](https://user-images.githubusercontent.com/19593367/211197183-93ba81ab-5e5e-4919-924d-f27e19deca5b.gif)
+
+
+Capture Virtualbox window with crop to remove menu and status bar. The values were measured for Windows 10. 
+
+```
+wingif capture -s -t " Oracle VM VirtualBox" -o %TEMP%/virtualboxcrop.gif --crop-top 89 --crop-bottom -43 --crop-left 1 --crop-right -1
+```
+
+![virtualboxcrop](https://user-images.githubusercontent.com/19593367/211197388-d305b01e-c2c9-4f54-9900-cc77a2f90fde.gif)
+
+
+
+## Self capture
 
 The option `-l` allow to capture WinGif window. By default the WinGif window does not allow to capture itself. 
 ```
@@ -38,28 +61,34 @@ wingif make -i %TEMP%\wingif -o %TEMP%\wingif2.gif
 
 
 
-## Capture any console application from the script
+## Capture console application from the script
 
-The following example will capture demo of Janda.Go template. The demo consist of following commands: 
+When you want to capture multiple actions / commands, the entire capture can be scripted.
+Following example will capture a demo of Janda.Go template. The demo script will run following commands:
 ```
 dotnet --version
 dotnet new install Janda.Go
 dotnet new consolego --help
 dotnet new consolego -n HelloWorld
+cd HelloWorld\src\HelloWorld
 dotnet run HelloWorld
+cd ..\..\..
 dotnet new consolego -n HelloSerilog -us
+cd HelloSerilog\src\HelloSerilog
 dotnet run HelloSerilog
+cd ..\..\..
 dotnet new consolego -n HelloAllFeatures -al
+cd HelloAllFeatures\src\HelloAllFeatures
 dotnet run -- --help
 dotnet run 
 dotnet run -- go
 dotnet run -- go -n HelloDir
 ```
 
+Instead of user typing the above commands while WinGif is capturing, all the actions were scripted in `JandaGo.cmd` batch file. 
 
-###### `JandaGo.cmd`
 ```batch
-:: Perform cleanup before capturing the demo
+:: Perform cleanup before capturing the demo. This allows to run this script again and again.
 rd HelloSerilog /s /q 2>nul
 rd HelloAllFeatures /s /q 2>nul
 rd HelloWorld /s /q 2>nul
@@ -118,12 +147,12 @@ dotnet run -- go -n HelloDir
 @call :PauseBeforeNext
 @cd ..\..\..
 
-:: Stop WinGif capturing
+:: Changing the window title will stop WinGif capturing.
 @title The End
 @goto :EOF
 
 :PauseBeforeNext
-:: This will simulate user prompt and wait until key is pressed
+:: This will simulate user prompt and wait 3 seconds between commands.
 @echo.
 @echo | set /p="%cd%>"
 @timeout /t 3 > nul
@@ -131,11 +160,10 @@ dotnet run -- go -n HelloDir
 @goto :EOF
 ```
 
-###### `JandaGo.gif`
-
 This is the result of `JandaGo.cmd` script.
 
 ![JandaGo](https://user-images.githubusercontent.com/19593367/211174559-b45486cd-20d8-49fe-839d-7d7a50d6395d.gif)
 
 
+ _It could be the feautre of wingif - keyboard type scripts :)_
 
