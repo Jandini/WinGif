@@ -20,7 +20,7 @@ namespace WinGif
         }
 
         public void StartCapture(ICaptureParameters parameters)
-        {
+        {            
             _logger.LogWarning("Press {key} to stop capturing", "Ctrl+C");
             
             if (!string.IsNullOrEmpty(parameters.OutputFramesDirectory))
@@ -47,7 +47,13 @@ namespace WinGif
                             continue;
                         }
 
-                        var bitmap = NativeMethods.CaptureActiveWindow();
+                        var bitmap = NativeMethods.CaptureActiveWindow(
+                            new NativeMethods.Rect() { 
+                                Top = parameters.CropTop,
+                                Bottom = parameters.CropBottom,
+                                Left = parameters.CropLeft,
+                                Right = parameters.CropRight
+                            });
 
                         _logger.LogInformation("Added frame number {frame} for {text} window", ++_frames, text);
                         _creator.AddFrame(bitmap, delay: -1, quality: GifQuality.Bit8);

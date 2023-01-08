@@ -4,6 +4,10 @@
       "commandName": "Project",
       "commandLineArgs": "capture -s -t Chrome -o %TEMP%/chrome.gif -f %TEMP%/chrome"
     },
+    "Capture VirtualBox": {
+      "commandName": "Project",
+      "commandLineArgs": "capture -s -t \" Oracle VM VirtualBox\" -o %TEMP%/virtualbox.gif --crop-top 89 --crop-bottom -43 --crop-left 1 --crop-right -1"
+    },
     "Make": {
       "commandName": "Project",
       "commandLineArgs": "make -i %TEMP%/chrome -o %TEMP%/chrome.gif"
