@@ -63,7 +63,7 @@ wingif make -i %TEMP%\wingif -o %TEMP%\wingif2.gif
 
 ## Capture console application from the script
 
-When you want to capture multiple actions / commands, the entire capture can be scripted. It triggers the idea to add keyboard type scripts to WinGif :)
+When you want to capture multiple actions / commands, the entire capture can be scripted.
 Following example will capture a demo of Janda.Go template. The demo script will run following commands:
 ```
 dotnet --version
@@ -165,4 +165,5 @@ This is the result of `JandaGo.cmd` script.
 ![JandaGo](https://user-images.githubusercontent.com/19593367/211174559-b45486cd-20d8-49fe-839d-7d7a50d6395d.gif)
 
 
+ _It could be the feautre of wingif - keyboard type scripts :)_
 
