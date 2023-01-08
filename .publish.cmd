@@ -1,1 +1,1 @@
-@powershell -File .publish.ps1
+dotnet publish src\WinGif.sln --self-contained -c Release -p:DebugSymbols=false -p:DebugType=None -p:PublishSingleFile=true -p:PublishTrimmed=true
