@@ -126,7 +126,6 @@ dotnet run -- go -n HelloDir
 :: This will simulate user prompt and wait until key is pressed
 @echo.
 @echo | set /p="%cd%>"
-::@pause > nul
 @timeout /t 3 > nul
 @cls
 @goto :EOF
