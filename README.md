@@ -38,3 +38,105 @@ wingif make -i %TEMP%\wingif -o %TEMP%\wingif2.gif
 
 
 
+## Capture any console application from the script
+
+The following example will capture demo of Janda.Go template. The demo consist of following commands: 
+```
+dotnet --version
+dotnet new install Janda.Go
+dotnet new consolego --help
+dotnet new consolego -n HelloWorld
+dotnet run HelloWorld
+dotnet new consolego -n HelloSerilog -us
+dotnet run HelloSerilog
+dotnet new consolego -n HelloAllFeatures -al
+dotnet run -- --help
+dotnet run 
+dotnet run -- go
+dotnet run -- go -n HelloDir
+```
+
+
+###### `JandaGo.cmd`
+```batch
+:: Perform cleanup before capturing the demo
+rd HelloSerilog /s /q 2>nul
+rd HelloAllFeatures /s /q 2>nul
+rd HelloWorld /s /q 2>nul
+dotnet new uninstall Janda.Go
+
+set TITLE=Janda.Go Demo
+:: Capture only when window with "Janda.Go Demo" title is active. Make sure the WinGif is available in PATH environment.
+start WinGif -s -t "%TITLE%" -o .\JandaGo.gif
+
+mode con:cols=120 lines=40
+
+:: Demo starts here
+@pause
+@cls
+@title %TITLE%
+dotnet --version
+
+@call :PauseBeforeNext
+dotnet new install Janda.Go
+
+@call :PauseBeforeNext
+dotnet new consolego --help
+
+@call :PauseBeforeNext
+dotnet new consolego -n HelloWorld
+
+@call :PauseBeforeNext
+@cd HelloWorld\src\HelloWorld
+dotnet run HelloWorld
+
+@call :PauseBeforeNext
+@cd ..\..\..
+dotnet new consolego -n HelloSerilog -us
+
+@call :PauseBeforeNext
+@cd HelloSerilog\src\HelloSerilog
+dotnet run HelloSerilog
+
+@call :PauseBeforeNext
+@cd ..\..\..
+dotnet new consolego -n HelloAllFeatures -al
+
+@call :PauseBeforeNext
+@cd HelloAllFeatures\src\HelloAllFeatures
+dotnet run -- --help
+
+@call :PauseBeforeNext
+dotnet run 
+
+@call :PauseBeforeNext
+dotnet run -- go
+
+@call :PauseBeforeNext
+dotnet run -- go -n HelloDir
+
+@call :PauseBeforeNext
+@cd ..\..\..
+
+:: Stop WinGif capturing
+@title The End
+@goto :EOF
+
+:PauseBeforeNext
+:: This will simulate user prompt and wait until key is pressed
+@echo.
+@echo | set /p="%cd%>"
+::@pause > nul
+@timeout /t 3 > nul
+@cls
+@goto :EOF
+```
+
+###### `JandaGo.gif`
+
+This is the result of `JandaGo.cmd` script.
+
+![JandaGo](https://user-images.githubusercontent.com/19593367/211174559-b45486cd-20d8-49fe-839d-7d7a50d6395d.gif)
+
+
+
