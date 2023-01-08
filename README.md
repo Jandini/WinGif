@@ -62,9 +62,8 @@ dotnet run -- go
 dotnet run -- go -n HelloDir
 ```
 
-Instead of user typing the above commands while WinGif is capturing, all the actions were scripted in below batch file. 
+Instead of user typing the above commands while WinGif is capturing, all the actions were scripted in `JandaGo.cmd` batch file. 
 
-###### `JandaGo.cmd`
 ```batch
 :: Perform cleanup before capturing the demo. This allows to run this script again and again.
 rd HelloSerilog /s /q 2>nul
@@ -137,8 +136,6 @@ dotnet run -- go -n HelloDir
 @cls
 @goto :EOF
 ```
-
-###### `JandaGo.gif`
 
 This is the result of `JandaGo.cmd` script.
 
