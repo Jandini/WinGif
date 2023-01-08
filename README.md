@@ -38,28 +38,35 @@ wingif make -i %TEMP%\wingif -o %TEMP%\wingif2.gif
 
 
 
-## Capture any console application from the script
+## Capture console application from the script
 
-The following example will capture demo of Janda.Go template. The demo consist of following commands: 
+When you want to capture multiple actions / commands, the entire capture can be scripted. It triggers the idea to add keyboard type scripts to WinGif :)
+Following example will capture a demo of Janda.Go template. The demo script will run following commands:
 ```
 dotnet --version
 dotnet new install Janda.Go
 dotnet new consolego --help
 dotnet new consolego -n HelloWorld
+cd HelloWorld\src\HelloWorld
 dotnet run HelloWorld
+cd ..\..\..
 dotnet new consolego -n HelloSerilog -us
+cd HelloSerilog\src\HelloSerilog
 dotnet run HelloSerilog
+cd ..\..\..
 dotnet new consolego -n HelloAllFeatures -al
+cd HelloAllFeatures\src\HelloAllFeatures
 dotnet run -- --help
 dotnet run 
 dotnet run -- go
 dotnet run -- go -n HelloDir
 ```
 
+Instead of user typing the above commands while WinGif is capturing, all the actions were scripted in below batch file. 
 
 ###### `JandaGo.cmd`
 ```batch
-:: Perform cleanup before capturing the demo
+:: Perform cleanup before capturing the demo. This allows to run this script again and again.
 rd HelloSerilog /s /q 2>nul
 rd HelloAllFeatures /s /q 2>nul
 rd HelloWorld /s /q 2>nul
@@ -118,12 +125,12 @@ dotnet run -- go -n HelloDir
 @call :PauseBeforeNext
 @cd ..\..\..
 
-:: Stop WinGif capturing
+:: Changing the window title will stop WinGif capturing.
 @title The End
 @goto :EOF
 
 :PauseBeforeNext
-:: This will simulate user prompt and wait until key is pressed
+:: This will simulate user prompt and wait 3 seconds between commands.
 @echo.
 @echo | set /p="%cd%>"
 @timeout /t 3 > nul
