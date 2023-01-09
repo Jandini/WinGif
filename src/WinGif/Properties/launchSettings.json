@@ -22,7 +22,7 @@
     },
     "Help": {
       "commandName": "Project",
-      "commandLineArgs": "capture --help"
+      "commandLineArgs": "--help"
     }
   }
 }
