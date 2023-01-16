@@ -7,19 +7,19 @@ using System.Drawing.Imaging;
 
 namespace WinGif
 {
-    internal class CaptureService : ICaptureService
+    internal class CaptureWindowService : ICaptureWindowService
     {
-        private readonly ILogger<CaptureService> _logger;
+        private readonly ILogger<CaptureWindowService> _logger;
         private AnimatedGifCreator _creator = null;
         private bool _capturing = true;
         private int _frames = 0;
 
-        public CaptureService(ILogger<CaptureService> logger)
+        public CaptureWindowService(ILogger<CaptureWindowService> logger)
         {
             _logger = logger;
         }
 
-        public void StartCapture(ICaptureParameters parameters)
+        public void StartCapture(ICaptureWindowParameters parameters)
         {            
             _logger.LogWarning("Press {key} to stop capturing", "Ctrl+C");
             

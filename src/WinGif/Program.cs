@@ -34,7 +34,7 @@ namespace WinGif
                             switch (parameters)
                             {
                                 case Options.Capture options:
-                                    var captureService = provider.GetRequiredService<ICaptureService>();
+                                    var captureService = provider.GetRequiredService<ICaptureWindowService>();
 
                                     Console.CancelKeyPress += (s, a) =>
                                     {

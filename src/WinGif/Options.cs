@@ -15,7 +15,7 @@ namespace WinGif
 
 
         [Verb("capture", isDefault: true, HelpText = "Create animated GIF by capturing active window. Examples:\n\ncapture -s -t \" Oracle VM VirtualBox\" -o %TEMP%/vbox.gif --crop-top 89 --crop-bottom -43 --crop-left 1 --crop-right -1")]
-        internal class Capture : Gif, ICaptureParameters 
+        internal class Capture : Gif, ICaptureWindowParameters 
         {
             [Option('t', "title", HelpText = "Case sensitive, full or partial window title. The capture will start when the window containing this title becomes active.", Required = true)]
             public string WindowCaption { get; set; }

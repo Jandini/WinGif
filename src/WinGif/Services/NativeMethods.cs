@@ -67,6 +67,7 @@ namespace WinGif
             var bounds = new Rectangle(rect.Left, rect.Top, rect.Right - rect.Left, rect.Bottom - rect.Top);           
             var result = new Bitmap(bounds.Width, bounds.Height);
 
+
             using (var graphics = Graphics.FromImage(result))
             {
                 graphics.CopyFromScreen(new Point(bounds.Left, bounds.Top), Point.Empty, bounds.Size);

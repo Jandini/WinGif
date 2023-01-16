@@ -1,6 +1,6 @@
 ﻿namespace WinGif
 {
-    public interface ICaptureParameters
+    public interface ICaptureWindowParameters
     {
         public string WindowCaption { get; }
         public bool SingleWindow { get; }

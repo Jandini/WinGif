@@ -26,7 +26,7 @@ namespace WinGif
         internal static IServiceCollection AddServices(this IServiceCollection services)
         {
             return services
-                .AddTransient<ICaptureService, CaptureService>()
+                .AddTransient<ICaptureWindowService, CaptureWindowService>()
                 .AddTransient<IMakeService, MakeService>();
         }
     }
