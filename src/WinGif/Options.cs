@@ -43,11 +43,14 @@ namespace WinGif
 
             [Option("crop-right", HelpText = "Positive or negative number of pixels.", Default = 0, Required = false)]
             public int CropRight { get; set; }
+
+            [Option("gray-scale", HelpText = "Capture in gray scale.", Default = false, Required = false)]
+            public bool IsGrayScale { get; set; }
         }
 
 
         [Verb("make", isDefault: false, HelpText = "Make animated GIF from PNG files.")]
-        internal class Make : Gif, IMakeParameters
+        internal class Make : Gif, IMakeGifParameters
         {
             [Option('i', "input", HelpText = "Path to directory with PNG files.", Required = true)]
             public string InputDirectory { get; set; }

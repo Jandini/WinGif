@@ -1,18 +1,18 @@
 ﻿namespace WinGif
 {
-    public interface ICaptureWindowParameters
+    interface ICaptureWindowParameters
     {
-        public string WindowCaption { get; }
-        public bool SingleWindow { get; }
-        public string OutputFile { get; }
-        public string OutputFramesDirectory { get; }
-        public int CaptureDelay { get; }
-        public int FrameDelay { get; }
-        public bool AllowSelfCapture { get; }
-        public int CropTop { get; }
-        public int CropBottom { get; }
-        public int CropLeft { get; }
-        public int CropRight { get; }
-
+        string WindowCaption { get; }
+        bool SingleWindow { get; }
+        string OutputFile { get; }
+        string OutputFramesDirectory { get; }
+        int CaptureDelay { get; }
+        int FrameDelay { get; }
+        bool AllowSelfCapture { get; }
+        int CropTop { get; }
+        int CropBottom { get; }
+        int CropLeft { get; }
+        int CropRight { get; }
+        bool IsGrayScale { get; }
     }
 }
