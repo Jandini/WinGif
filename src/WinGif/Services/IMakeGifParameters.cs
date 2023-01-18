@@ -1,6 +1,6 @@
 ﻿namespace WinGif
 {
-    public interface IMakeParameters
+    public interface IMakeGifParameters
     {
         public string InputDirectory { get; }
         public string OutputFile { get; }

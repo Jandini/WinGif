@@ -4,16 +4,16 @@ using System.Linq;
 
 namespace WinGif
 {
-    internal class MakeService : IMakeService
+    internal class MakeGifService : IMakeGifService
     {
-        private readonly ILogger<MakeService> _logger;
+        private readonly ILogger<MakeGifService> _logger;
 
-        public MakeService(ILogger<MakeService> logger)
+        public MakeGifService(ILogger<MakeGifService> logger)
         {
             _logger = logger;
         }
 
-        public void Make(IMakeParameters parameters)
+        public void Make(IMakeGifParameters parameters)
         {
             _logger.LogInformation("Making {gif} from PNG files in {directory}", parameters.OutputFile, parameters.InputDirectory);
 

@@ -12,6 +12,11 @@
       "commandName": "Project",
       "commandLineArgs": "capture -s -t \" Oracle VM VirtualBox\" -o %TEMP%/virtualboxcrop.gif --crop-top 89 --crop-bottom -43 --crop-left 1 --crop-right -1"
     },
+    "Capture VLC + Crop": {
+      "commandName": "Project",
+      "commandLineArgs": "wingif capture -t \"VLC media player\" -o %TEMP%/vlc.gif --crop-left 50 --crop-right -60 --crop-top 85 --crop-bottom -56 --frame-delay 250 --capture-delay 150"
+    },
+
     "Make": {
       "commandName": "Project",
       "commandLineArgs": "make -i %TEMP%/chrome -o %TEMP%/chrome.gif"

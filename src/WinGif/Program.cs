@@ -45,7 +45,7 @@ namespace WinGif
                                     break;
 
                                 case Options.Make options:
-                                    var makeService = provider.GetRequiredService<IMakeService>();
+                                    var makeService = provider.GetRequiredService<IMakeGifService>();
                                     makeService.Make(options);
                                     break;
 

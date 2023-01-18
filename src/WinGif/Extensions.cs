@@ -27,7 +27,7 @@ namespace WinGif
         {
             return services
                 .AddTransient<ICaptureWindowService, CaptureWindowService>()
-                .AddTransient<IMakeService, MakeService>();
+                .AddTransient<IMakeGifService, MakeGifService>();
         }
     }
 }
