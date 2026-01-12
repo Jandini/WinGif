@@ -1,5 +1,9 @@
 {
   "profiles": {
+    "Windows": {
+      "commandName": "Project",
+      "commandLineArgs": "windows"
+    },
     "Capture": {
       "commandName": "Project",
       "commandLineArgs": "capture -s -t Chrome -o %TEMP%/chrome.gif -f %TEMP%/chrome"
