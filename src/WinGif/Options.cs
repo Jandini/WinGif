@@ -55,5 +55,10 @@ namespace WinGif
             [Option('o', "output", HelpText = "Output GIF file name.", Required = true)]
             public string OutputFile { get; set; }
         }
+
+        [Verb("windows", isDefault: false, HelpText = "List all visible window titles.")]
+        internal class Windows
+        {
+        }
     }
 }

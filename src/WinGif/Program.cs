@@ -16,7 +16,7 @@ namespace WinGif
         {            
             try
             {
-                Parser.Default.ParseArguments<Options.Capture, Options.Make>(args)
+                Parser.Default.ParseArguments<Options.Capture, Options.Make, Options.Windows>(args)
                     .WithParsed((parameters) =>
                     {
                         using var provider = new ServiceCollection()
@@ -47,6 +47,11 @@ namespace WinGif
                                 case Options.Make options:
                                     var makeService = provider.GetRequiredService<IMakeService>();
                                     makeService.Make(options);
+                                    break;
+
+                                case Options.Windows:
+                                    var windowService = provider.GetRequiredService<IWindowService>();
+                                    windowService.ListWindows();
                                     break;
 
                             };
